@@ -1,44 +1,50 @@
 ﻿#include <iostream>
-using namespace std;
 #include "Tasks.h"
 #include "Examples.h"
+
+using namespace std;
+
 void MenuTask()
 {
-    cout << "     Menu Task   \n";
-    cout << "    1.  Calculation of expressions using bitwise operations  \n";
-    cout << "    2.  Data encryption using bitwise operations \n";
-    cout << "    3.  Data encryption using structures with bit fields \n";
-    cout << "    4.  The problem of using bitwise operations \n";
-    cout << "    5.  Examples of problems using bitwise operations \n";
-    cout << "    6.  Exit \n";
+    cout << "                          Завдання до лабораторної роботи: \n";
+    cout << "    1. Завдання Обчислення виразів з використанням побітових операцій. \n";
+    cout << "                Задано цілі числа a, b, c та d. Обчислити вираз без використання \n";
+    cout << "                операцій множення та ділення(замінивши на їх операцій зсувів). \n";
+    cout << "                        x = ( 17*a + 312*c ) / 32 - b*120 + d*127 ;\n\n";
+    cout << "    2. Завдання Шифрування інформації. \n";
+    cout << "                Задано 8 рядків тексту. У рядку до 8 символів. Доповнити пробілами рядки до 8 символів \n";
+    cout << "                Шифрувати тексти таким чином, щоб кожний символ тексту записувався у два байта.Два байта мають таку структуру : \n";
+    cout << "                - у бітах 0-2 знаходиться номер рядка символу (3 біти),  \n";
+    cout << "                - у бітах 3-5 позиція символу в рядку (3 біти), \n";
+    cout << "                - 6 біт – біт парності перших двох полів (1 біт), \n";
+    cout << "                - у бітах 7-14 ASCII - код букви (8 біт), \n";
+    cout << "                - 15 біт - біт парності попереднього поля (1 біт). \n\n";
+    cout << "    3. Завдання Шифрування інформації.Структури з полями бітів.Об’єднання. \n";
+    cout << "                Реалізувати завдання 2 з використанням структур з бітовими полями та об’єднаннями. \n\n";
+    cout << "    4. Завдання \n";
+    cout << "                Задано числа  0 <= a <= 12, 0 <= b <= 9, 1940 <= c <= 2065, 0 <= d <= 31, 0 <= e <= 1. \n";
+    cout << "                Компактно розмістити задані числа у змінній розміром у 3 байти. \n\n";
+    cout << "    5. Exit \n\n";
 }
+
 void task1() {
-    // Обчислення виразів з використанням побітових операцій
-    // Calculation of expressions using bitwise operations 
-    cout << " Calculation of expressions using bitwise operations  \n";
+    cout << "    Завдання #1 \n\n ";
+    Exercise1();
 }
 
-void task2()
-{
-    // Шифрування даних з використання побітових операцій 
-    // Data encryption using bitwise operations
-    cout << " Data encryption using bitwise operations  \n";
-
+void task2() {
+    cout << "    Завдання #2 \n\n ";
+    Exercise2();
 }
 
-void task3()
-{
-    // Шифрування даних з використання стуктур з бітовими полями 
-    // Data encryption using structures with bit fields
-    cout << "  Data encryption using structures with bit fields \n";
+void task3(){
+    cout << "    Завдання #3 \n\n ";
+    //Exercise3();
 }
 
-
-void task4()
-{   // Задача із використання побітових операцій
-    // The problem of using bitwise operations
-    cout << " Data encryption using structures with bit fields \n";
-
+void task4(){
+    cout << "    Завдання #4 \n\n ";
+    Exercise4();
 }
 
 

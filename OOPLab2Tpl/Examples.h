@@ -1,7 +1,5 @@
 #pragma once
-void Examples();
-void Example1();
-void Example2();
-void Example3();
-void Example4();
-void Example5();
+void Exercise1();
+void Exercise2();
+void Exercise3();
+void Exercise4();
