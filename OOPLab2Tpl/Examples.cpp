@@ -52,12 +52,46 @@ void Exercise1(){
 	return;
 }
 
+void ReadArrayTextFile(int sizeMax, unsigned char* pA){
+
+	int size = 64;
+	ifstream fin;
+	fin.open("C:\\Users\\Admin\\Documents\\GitHub\\ooplab2_u-VasyaSuper\\file1.txt");
+	if (fin.fail()) return ;
+	if (size <= 0) return ;
+
+	for (int i = 0; i < size; i++)
+	{
+		fin >> pA[i];
+		cout << i + 1 << ") Element arrays:" << pA[i] << "\n";
+	}
+	fin.close();
+
+	return;
+}
+
+void WriteArrayTextFile1(int size, unsigned char* pA) {
+
+	ofstream fout("C:\\Users\\Admin\\Documents\\GitHub\\ooplab2_u-VasyaSuper\\file2.bin");
+	if (!fout) cout << "Erorr";
+
+	else {
+		for (int i = 0; i < size; i++) {
+			fout << pA[i];
+		}
+	}
+
+	fout.close();
+
+	return;
+}
+
 void encryptArray(unsigned char* text, unsigned char* destination) {
 	for (unsigned char i = 0; i < 8; i++) {
 		for (unsigned char j = 0; j < 16; j += 2) {
 			destination[(i << 4) + j] = (i << 5) | (j << 1) | ((i << 5) & 0b01000000 ? 0b00000010 : 0) | (text[(i << 3) + (j >> 1)] >> 7);
 			destination[(i << 4) + j + 1] = (text[(i << 3) + (j >> 1)] << 1) | ((text[(i << 3) + (j >> 1)] << 1) & 0b00000010 ? 1 : 0);
-		}
+		}  //00110001
 	}
 }
 
@@ -82,25 +116,16 @@ struct optio3 {
 	unsigned char pairing14 : 1;
 };
 
-void Exercise2(unsigned char* encChar = NULL) {
-	//1234567812345678123456781234567812345678123456781234567812345678//
-	unsigned char text[65] = "12345678qwertyuiasdfghjkzxcvbnm,,mnbvcxzkjhgfdsaiuytrewq87654321";
-	unsigned char encrypted[128];
-	unsigned char decrypted[64];
-	unsigned char* encryptedText = encrypted;
+void Print_text(unsigned char* text, unsigned char* encryptedText, unsigned char* decrypted) {
 
-	if (encChar != NULL) {
-		encryptedText = encChar;
-	}
-
-	encryptArray(text, encryptedText);
-	decryptArray(encryptedText, decrypted);
 	for (int i = 0; i < 64; i++) {  // basic
-		cout << text[i];
+		cout <<text[i];
 	}
 	cout << "\n\n";
 	for (int i = 0; i < 128; i++) { // encrypted
-		cout << encryptedText[i];
+		binaryView(encryptedText[i]);
+		if ((i % 2) != 0)
+			cout << "\n";
 		if (i == 63) cout << '\n';
 	}
 	cout << "\n\n";
@@ -111,11 +136,39 @@ void Exercise2(unsigned char* encChar = NULL) {
 	return;
 }
 
+void Exercise2() {
+
+	unsigned char text[65];
+	unsigned char encrypted[128];
+	unsigned char decrypted[64];
+	unsigned char* encryptedText = encrypted;
+
+	ReadArrayTextFile(64, text);
+	WriteArrayTextFile1(64, text);
+
+	encryptArray(text, encryptedText);
+	decryptArray(encryptedText, decrypted);
+	
+	Print_text(text, encryptedText, decrypted);
+
+	return;
+}
+
 void Exercise3() {
 	optio3 enc[64];
-	unsigned char* encChar = (unsigned char*)enc;
+	unsigned char* encryptedText = (unsigned char*)enc;
 
-	Exercise2(encChar);
+	unsigned char text[65];
+	unsigned char encrypted[128];
+	unsigned char decrypted[64];
+
+	ReadArrayTextFile(64, text);
+	WriteArrayTextFile1(64, text);
+
+	encryptArray(text, encryptedText);
+	decryptArray(encryptedText, decrypted);
+
+	Print_text(text, encryptedText, decrypted);
 
 	return;
 }

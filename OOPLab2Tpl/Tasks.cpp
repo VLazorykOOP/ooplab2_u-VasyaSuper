@@ -39,7 +39,7 @@ void task2() {
 
 void task3(){
     cout << "    Завдання #3 \n\n ";
-    //Exercise3();
+    Exercise3();
 }
 
 void task4(){
